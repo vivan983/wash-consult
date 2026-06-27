@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'WASH – Consult General Trading Co. Ltd',
+      title: 'WASH – CONSULT GENERAL TRADING CO. LTD | Juba, South Sudan',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
@@ -60,7 +60,14 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/api/**': { cors: true },
+    '/api/**': {
+      cors: true,
+      headers: {
+        'access-control-allow-origin': process.env.NODE_ENV === 'production'
+          ? 'https://washconsult.com'
+          : '*',
+      },
+    },
   },
 
   typescript: {

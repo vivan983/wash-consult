@@ -147,7 +147,6 @@ const servicesStore = useServicesStore();
 const fieldErrors = ref(null);
 
 async function handleSubmit() {
-  // Client-side validation
   const errors = {};
   if (!contactStore.form.fullName || contactStore.form.fullName.trim().length < 2) {
     errors.fullName = 'Full name is required (minimum 2 characters)';

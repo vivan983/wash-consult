@@ -14,7 +14,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           <ServiceCard
-            v-for="sector in servicesStore.sectors"
+            v-for="sector in servicesStore.sectors.slice(0, 6)"
             :key="sector.id"
             :title="sector.title"
             :description="sector.description"
@@ -121,10 +121,16 @@ import { useServicesStore } from '~/stores/useServicesStore';
 const servicesStore = useServicesStore();
 
 useSeoMeta({
-  title: 'WASH – Consult General Trading Co. Ltd | Connecting South Sudan to the World',
-  description: 'Multi-sector trading company registered in Juba, South Sudan. Providing general trading, logistics, financial services, agriculture, petroleum, and real estate solutions under the Companies Act 2012.',
-  ogTitle: 'WASH – Consult General Trading Co. Ltd',
-  ogDescription: 'Connecting South Sudan to the World — Multi-sector trading company based in Juba.',
+  title: 'WASH – CONSULT GENERAL TRADING CO. LTD | Juba, South Sudan',
+  description: 'Multi-sector trading company registered in Juba, South Sudan under the Companies Act 2012. Providing general trading, logistics, financial services, agriculture, petroleum, energy, and real estate solutions with US$100,000 share capital.',
+  ogTitle: 'WASH – CONSULT GENERAL TRADING CO. LTD | Juba, South Sudan',
+  ogDescription: 'Connecting South Sudan to the World — Multi-sector trading company based in Juba, South Sudan. Registered under the Companies Act 2012.',
   ogType: 'website',
+  ogImage: 'https://washconsult.com/og-image.png',
+  ogUrl: 'https://washconsult.com',
+});
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://washconsult.com' }],
 });
 </script>

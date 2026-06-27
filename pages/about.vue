@@ -192,9 +192,16 @@
 
 <script setup>
 useSeoMeta({
-  title: 'About WASH – Consult | Our Story, Mission & Legal Registration',
-  description: 'WASH – Consult General Trading Co. Ltd is incorporated in Juba, South Sudan under the Companies Act 2012 with US$100,000 share capital. Learn about our mission to drive economic growth through reliable trading and services.',
-  ogTitle: 'About WASH – Consult General Trading Co. Ltd',
-  ogDescription: 'Multi-sector trading company registered in Juba, South Sudan under the Companies Act 2012.',
+  title: 'About Us | WASH – CONSULT GENERAL TRADING CO. LTD',
+  description: 'WASH – CONSULT GENERAL TRADING CO. LTD is incorporated in Juba, South Sudan under the Companies Act 2012 with US$100,000 share capital. Company limited by shares. Learn about our mission and vision.',
+  ogTitle: 'About Us | WASH – CONSULT GENERAL TRADING CO. LTD',
+  ogDescription: 'Multi-sector trading company registered in Juba, South Sudan under the Companies Act 2012. Company limited by shares with US$100,000 capital.',
+  ogType: 'website',
+  ogImage: 'https://washconsult.com/og-image.png',
+  ogUrl: 'https://washconsult.com/about',
+});
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://washconsult.com/about' }],
 });
 </script>

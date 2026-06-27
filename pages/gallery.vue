@@ -33,9 +33,16 @@ if (data.value) {
 loading.value = false;
 
 useSeoMeta({
-  title: 'Gallery & News | WASH – Consult General Trading — South Sudan',
-  description: 'Explore news, project highlights, and community engagement from WASH – Consult General Trading Co. Ltd in Juba, South Sudan. Updates from our eight business sectors.',
-  ogTitle: 'WASH – Consult Gallery & News',
-  ogDescription: 'Latest news and highlights from WASH Consult operations in South Sudan.',
+  title: 'Gallery & News | WASH – CONSULT GENERAL TRADING CO. LTD',
+  description: 'Explore news, project highlights, and community engagement from WASH – CONSULT GENERAL TRADING CO. LTD in Juba, South Sudan. Updates from our eight business sectors.',
+  ogTitle: 'Gallery & News | WASH – CONSULT GENERAL TRADING CO. LTD',
+  ogDescription: 'Latest news and highlights from WASH – CONSULT GENERAL TRADING CO. LTD operations in South Sudan.',
+  ogType: 'website',
+  ogImage: 'https://washconsult.com/og-image.png',
+  ogUrl: 'https://washconsult.com/gallery',
+});
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://washconsult.com/gallery' }],
 });
 </script>

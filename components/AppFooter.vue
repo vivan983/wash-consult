@@ -83,7 +83,7 @@
     <div class="border-t border-white/10">
       <div class="container-custom py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
         <p class="text-white/40 text-caption">
-          &copy; {{ currentYear }} WASH – Consult General Trading Co. Ltd. All rights reserved.
+          &copy; {{ currentYear }} WASH – CONSULT GENERAL TRADING CO. LTD. Company limited by shares. All rights reserved.
         </p>
         <p class="text-white/30 text-caption">
           Registered in Juba, South Sudan | Companies Act 2012

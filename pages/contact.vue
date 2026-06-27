@@ -127,9 +127,16 @@
 
 <script setup>
 useSeoMeta({
-  title: 'Contact WASH – Consult | Get in Touch — Juba, South Sudan',
-  description: 'Contact WASH – Consult General Trading Co. Ltd in Juba, South Sudan. Send us an inquiry about our trading, logistics, financial, agriculture, and energy services under the Companies Act 2012.',
-  ogTitle: 'Contact WASH – Consult General Trading Co. Ltd',
+  title: 'Contact Us | WASH – CONSULT GENERAL TRADING CO. LTD',
+  description: 'Contact WASH – CONSULT GENERAL TRADING CO. LTD in Juba, South Sudan. Send us an inquiry about our trading, logistics, financial, agriculture, and energy services under the Companies Act 2012.',
+  ogTitle: 'Contact Us | WASH – CONSULT GENERAL TRADING CO. LTD',
   ogDescription: 'Get in touch with our team in Juba, South Sudan for trading and logistics services.',
+  ogType: 'website',
+  ogImage: 'https://washconsult.com/og-image.png',
+  ogUrl: 'https://washconsult.com/contact',
+});
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://washconsult.com/contact' }],
 });
 </script>

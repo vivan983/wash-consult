@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
 
   const config = useRuntimeConfig();
   const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = config.supabaseServiceRoleKey;
+  const supabaseKey = config.supabaseServiceRoleKey || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!supabaseUrl || !supabaseKey) {
     throw createError({
@@ -24,15 +24,29 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // Verify the user's token by getting their user info
   const supabaseAdmin = createClient(supabaseUrl, supabaseKey);
 
+  // Verify token and get user
   const { data: { user }, error: authError } = await supabaseAdmin.auth.getUser(token);
 
   if (authError || !user) {
     throw createError({
       statusCode: 401,
       statusMessage: 'Unauthorized — invalid or expired token.',
+    });
+  }
+
+  // Check if user has admin role in profiles table
+  const { data: profile, error: profileError } = await supabaseAdmin
+    .from('profiles')
+    .select('role')
+    .eq('id', user.id)
+    .single();
+
+  if (profileError || !profile || profile.role !== 'admin') {
+    throw createError({
+      statusCode: 403,
+      statusMessage: 'Forbidden — admin access required.',
     });
   }
 

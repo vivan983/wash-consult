@@ -15,7 +15,7 @@
     <!-- Services Grid -->
     <section class="section bg-white">
       <div class="container-custom">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
           <!-- 1. General Trading and Supply -->
           <div class="card border-2 border-transparent hover-lift p-8 group">
             <div class="flex items-start gap-4">
@@ -295,9 +295,16 @@
 
 <script setup>
 useSeoMeta({
-  title: 'Our Services | WASH – Consult General Trading — 8 Business Sectors',
-  description: 'WASH Consult operates in 8 sectors: General Trading, Cleaning, Money Transfer, Petroleum, Transportation, Agriculture, Real Estate, and Wholesale Distribution — all registered under the Companies Act 2012 in Juba, South Sudan.',
-  ogTitle: 'WASH – Consult Services — 8 Business Sectors',
+  title: 'Our Services | WASH – CONSULT GENERAL TRADING CO. LTD',
+  description: 'WASH – CONSULT GENERAL TRADING CO. LTD operates in 8 sectors: General Trading and Supply, Cleaning and Facility Services, Money Transfer and Financial Services, Petroleum and Energy Products, Transportation and Logistics, Agriculture and Farming, Real Estate and Property Leasing, and Wholesale and Retail Distribution.',
+  ogTitle: 'Our Services | WASH – CONSULT GENERAL TRADING CO. LTD',
   ogDescription: 'From general trading to petroleum, agriculture to real estate — eight sectors driving growth in South Sudan.',
+  ogType: 'website',
+  ogImage: 'https://washconsult.com/og-image.png',
+  ogUrl: 'https://washconsult.com/services',
+});
+
+useHead({
+  link: [{ rel: 'canonical', href: 'https://washconsult.com/services' }],
 });
 </script>

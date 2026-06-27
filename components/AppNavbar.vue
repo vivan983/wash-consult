@@ -18,7 +18,7 @@
         </NuxtLink>
 
         <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center gap-1">
+        <div class="hidden md:flex items-center gap-1">
           <NuxtLink
             v-for="link in navLinks"
             :key="link.path"
@@ -39,7 +39,7 @@
 
         <!-- Mobile Menu Toggle -->
         <button
-          class="lg:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/10 transition-colors"
+          class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/10 transition-colors"
           @click="mobileOpen = !mobileOpen"
           :aria-expanded="mobileOpen"
           aria-label="Toggle navigation menu"
@@ -66,7 +66,7 @@
       <div
         v-if="mobileOpen"
         id="mobile-menu"
-        class="lg:hidden bg-primary border-t border-white/10"
+        class="md:hidden bg-primary border-t border-white/10"
       >
         <div class="container-custom py-4 flex flex-col gap-2">
           <NuxtLink

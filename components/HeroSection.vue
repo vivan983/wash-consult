@@ -1,5 +1,5 @@
 <template>
-  <section class="relative min-h-[90vh] flex items-center bg-primary overflow-hidden" role="banner">
+  <section class="relative min-h-screen flex items-center bg-primary overflow-hidden" role="banner">
     <!-- Background Pattern / Animation -->
     <div class="absolute inset-0 z-0">
       <!-- Subtle grid pattern -->

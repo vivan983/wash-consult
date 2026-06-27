@@ -1,11 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 
 export default defineEventHandler(async () => {
-  const config = useRuntimeConfig();
   const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = config.supabaseServiceRoleKey;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
 
-  // If Supabase is not configured, return empty array (empty state on gallery page)
+  // If Supabase is not configured, return empty array
   if (!supabaseUrl || !supabaseKey) {
     return [];
   }
@@ -14,16 +13,13 @@ export default defineEventHandler(async () => {
 
   const { data, error } = await supabase
     .from('news_posts')
-    .select('*')
+    .select('id, title, excerpt, image_url, created_at')
     .eq('published', true)
     .order('created_at', { ascending: false });
 
   if (error) {
     console.error('News fetch error:', error.message);
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'Failed to fetch news posts.',
-    });
+    return [];
   }
 
   return data || [];

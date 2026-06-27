@@ -193,43 +193,67 @@
           <button @click="store.fetchInquiries()" class="btn-primary text-sm">Try Again</button>
         </div>
 
-        <!-- Inquiries Table -->
-        <div v-else-if="store.inquiries.length > 0" class="card overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="bg-primary/5 border-b border-gray-100">
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Name</th>
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm hidden md:table-cell">Email</th>
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm hidden lg:table-cell">Phone</th>
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm hidden lg:table-cell">Service</th>
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm hidden xl:table-cell">Message</th>
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Status</th>
-                  <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="inquiry in store.inquiries"
-                  :key="inquiry.id"
-                  class="border-b border-gray-50 hover:bg-primary/[0.02] cursor-pointer transition-colors"
-                  :class="{ 'bg-blue-50/30': inquiry.status === 'new' }"
-                  @click="store.selectInquiry(inquiry)"
-                >
-                  <td class="py-3 px-4 font-medium text-primary">{{ inquiry.full_name }}</td>
-                  <td class="py-3 px-4 text-gray-600 hidden md:table-cell">{{ inquiry.email }}</td>
-                  <td class="py-3 px-4 text-gray-600 hidden lg:table-cell">{{ inquiry.phone || '—' }}</td>
-                  <td class="py-3 px-4 text-gray-600 hidden lg:table-cell">{{ inquiry.service_interest || '—' }}</td>
-                  <td class="py-3 px-4 text-gray-600 hidden xl:table-cell max-w-xs truncate">{{ inquiry.message }}</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-block px-2.5 py-1 rounded-full text-caption font-heading font-semibold" :class="statusClass(inquiry.status)">
-                      {{ inquiry.status }}
-                    </span>
-                  </td>
-                  <td class="py-3 px-4 text-gray-500 text-caption whitespace-nowrap">{{ formatDate(inquiry.created_at) }}</td>
-                </tr>
-              </tbody>
-            </table>
+        <!-- Inquiries: Mobile Cards + Desktop Table -->
+        <div v-else-if="store.inquiries.length > 0">
+          <!-- Mobile Card Layout -->
+          <div class="block md:hidden space-y-4">
+            <div
+              v-for="inquiry in store.inquiries"
+              :key="inquiry.id"
+              class="card p-4 cursor-pointer hover:shadow-lg transition-shadow"
+              :class="{ 'border-l-4 border-l-blue-500': inquiry.status === 'new' }"
+              @click="store.selectInquiry(inquiry)"
+            >
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h3 class="font-heading font-semibold text-primary text-base">{{ inquiry.full_name }}</h3>
+                  <p class="text-accent text-sm">{{ inquiry.email }}</p>
+                </div>
+                <span class="inline-block px-2.5 py-1 rounded-full text-caption font-heading font-semibold shrink-0" :class="statusClass(inquiry.status)">{{ inquiry.status }}</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2 text-sm mb-3">
+                <div><p class="text-gray-400 text-caption">Phone</p><p class="text-primary">{{ inquiry.phone || '—' }}</p></div>
+                <div><p class="text-gray-400 text-caption">Service</p><p class="text-primary text-sm">{{ inquiry.service_interest || '—' }}</p></div>
+              </div>
+              <div class="text-sm mb-3"><p class="text-gray-400 text-caption">Message</p><p class="text-primary line-clamp-3">{{ inquiry.message }}</p></div>
+              <p class="text-gray-400 text-caption">{{ formatDate(inquiry.created_at) }}</p>
+            </div>
+          </div>
+
+          <!-- Desktop Table Layout -->
+          <div class="hidden md:block card overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-primary/5 border-b border-gray-100">
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Name</th>
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Email</th>
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Phone</th>
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Service</th>
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm hidden xl:table-cell">Message</th>
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Status</th>
+                    <th class="text-left py-3 px-4 font-heading font-semibold text-primary text-sm">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    v-for="inquiry in store.inquiries"
+                    :key="inquiry.id"
+                    class="border-b border-gray-50 hover:bg-primary/[0.02] cursor-pointer transition-colors"
+                    :class="{ 'bg-blue-50/30': inquiry.status === 'new' }"
+                    @click="store.selectInquiry(inquiry)"
+                  >
+                    <td class="py-3 px-4 font-medium text-primary">{{ inquiry.full_name }}</td>
+                    <td class="py-3 px-4 text-gray-600">{{ inquiry.email }}</td>
+                    <td class="py-3 px-4 text-gray-600">{{ inquiry.phone || '—' }}</td>
+                    <td class="py-3 px-4 text-gray-600">{{ inquiry.service_interest || '—' }}</td>
+                    <td class="py-3 px-4 text-gray-600 hidden xl:table-cell max-w-xs truncate">{{ inquiry.message }}</td>
+                    <td class="py-3 px-4"><span class="inline-block px-2.5 py-1 rounded-full text-caption font-heading font-semibold" :class="statusClass(inquiry.status)">{{ inquiry.status }}</span></td>
+                    <td class="py-3 px-4 text-gray-500 text-caption whitespace-nowrap">{{ formatDate(inquiry.created_at) }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
 
