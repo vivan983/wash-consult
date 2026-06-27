@@ -292,9 +292,44 @@
                     <div v-if="store.selectedInquiry.phone"><p class="text-caption text-gray-400 font-heading font-semibold">Phone</p><p class="text-primary">{{ store.selectedInquiry.phone }}</p></div>
                     <div v-if="store.selectedInquiry.service_interest"><p class="text-caption text-gray-400 font-heading font-semibold">Service Interest</p><p class="text-primary">{{ store.selectedInquiry.service_interest }}</p></div>
                     <div><p class="text-caption text-gray-400 font-heading font-semibold">Message</p><p class="text-primary whitespace-pre-wrap leading-relaxed bg-light rounded-lg p-4 mt-1">{{ store.selectedInquiry.message }}</p></div>
-                    <div class="flex gap-4">
+                    <div class="flex gap-4 mb-6">
                       <div><p class="text-caption text-gray-400 font-heading font-semibold">Status</p><span class="inline-block px-2.5 py-1 rounded-full text-caption font-heading font-semibold mt-1" :class="statusClass(store.selectedInquiry.status)">{{ store.selectedInquiry.status }}</span></div>
                       <div><p class="text-caption text-gray-400 font-heading font-semibold">Date</p><p class="text-primary text-sm mt-1">{{ formatDateTime(store.selectedInquiry.created_at) }}</p></div>
+                    </div>
+
+                    <!-- Reply Form -->
+                    <div v-if="showReplyForm" class="border-t border-gray-100 pt-4">
+                      <div class="flex items-center gap-2 mb-2">
+                        <span class="text-sm text-gray-500">From:</span>
+                        <span class="text-sm font-heading font-semibold text-primary">WASH – CONSULT GENERAL TRADING CO. LTD</span>
+                      </div>
+                      <div class="flex items-center gap-2 mb-3">
+                        <span class="text-sm text-gray-500">To:</span>
+                        <span class="text-sm font-heading font-semibold text-primary">{{ store.selectedInquiry.full_name }} ({{ store.selectedInquiry.email }})</span>
+                      </div>
+                      <label class="block text-sm font-heading font-semibold text-primary mb-2">Your Message</label>
+                      <textarea v-model="replyText" rows="6" class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-accent focus:border-accent resize-y" placeholder="Type your reply message here..."></textarea>
+                      <p class="text-gray-400 text-caption mt-1">The greeting "Dear [Name]," will be added automatically at the top of the email.</p>
+                      <div class="flex gap-2 mt-3">
+                        <button @click="handleReply" :disabled="replying" class="flex-1 py-2.5 bg-accent text-primary font-heading font-semibold text-sm rounded-lg hover:bg-accent-500 transition-colors disabled:opacity-60">
+                          <svg v-if="replying" class="animate-spin h-4 w-4 inline mr-1" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                          {{ replying ? 'Sending...' : 'Send Reply' }}
+                        </button>
+                        <button @click="showReplyForm = false" class="px-4 py-2.5 border border-gray-200 text-gray-600 font-heading font-semibold text-sm rounded-lg hover:bg-gray-50 transition-colors">Cancel</button>
+                      </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="border-t border-gray-100 pt-4 flex gap-2">
+                      <button v-if="!showReplyForm" @click="showReplyForm = true" class="flex-1 flex items-center justify-center gap-2 py-2.5 bg-accent text-primary font-heading font-semibold text-sm rounded-lg hover:bg-accent-500 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+                        Reply
+                      </button>
+                      <button @click="handleDelete" :disabled="deleting" class="flex items-center justify-center gap-2 px-4 py-2.5 border border-red-200 text-red-600 font-heading font-semibold text-sm rounded-lg hover:bg-red-50 transition-colors disabled:opacity-60">
+                        <svg v-if="deleting" class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                        <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        {{ deleting ? 'Deleting...' : 'Delete' }}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -419,6 +454,53 @@ async function handleLogout() {
   await supabase.auth.signOut();
   session.value = null;
   store.inquiries = [];
+}
+
+// Reply & Delete
+const showReplyForm = ref(false);
+const replyText = ref('');
+const replying = ref(false);
+const deleting = ref(false);
+
+async function handleReply() {
+  if (!replyText.value || replyText.value.trim().length < 5) return;
+  replying.value = true;
+  try {
+    const token = session.value?.access_token;
+    const { data, error } = await useFetch('/api/admin/reply', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}` },
+      body: { inquiryId: store.selectedInquiry.id, replyMessage: replyText.value.trim() },
+    });
+    if (error.value) throw new Error(error.value?.data?.statusMessage || 'Failed');
+    store.selectedInquiry.status = 'replied';
+    showReplyForm.value = false;
+    replyText.value = '';
+  } catch (e) {
+    alert('Reply failed: ' + e.message);
+  } finally {
+    replying.value = false;
+  }
+}
+
+async function handleDelete() {
+  if (!confirm('Delete this inquiry permanently? This cannot be undone.')) return;
+  deleting.value = true;
+  try {
+    const token = session.value?.access_token;
+    const { error } = await useFetch('/api/admin/inquiries', {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` },
+      body: { id: store.selectedInquiry.id },
+    });
+    if (error.value) throw new Error(error.value?.data?.statusMessage || 'Failed');
+    store.inquiries = store.inquiries.filter(i => i.id !== store.selectedInquiry.id);
+    store.selectedInquiry = null;
+  } catch (e) {
+    alert('Delete failed: ' + e.message);
+  } finally {
+    deleting.value = false;
+  }
 }
 
 function statusClass(status) {
