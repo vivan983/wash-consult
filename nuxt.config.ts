@@ -5,16 +5,28 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
-    // '@nuxtjs/supabase', // Temporarily disabled — set up Supabase credentials in .env to enable
+    '@nuxtjs/supabase',
   ],
 
-  // supabase: {
-  //   redirectOptions: {
-  //     login: '/admin',
-  //     callback: '/admin',
-  //     exclude: ['/', '/about', '/services', '/contact', '/gallery'],
-  //   },
-  // },
+  runtimeConfig: {
+    // Private keys exposed only to server routes
+    supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    emailHost: process.env.EMAIL_HOST,
+    emailPort: process.env.EMAIL_PORT,
+    emailUser: process.env.EMAIL_USER,
+    emailPass: process.env.EMAIL_PASS,
+    emailTo: process.env.EMAIL_TO,
+  },
+
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_ANON_KEY,
+    redirectOptions: {
+      login: '/admin',
+      callback: '/admin',
+      exclude: ['/', '/about', '/services', '/contact', '/gallery'],
+    },
+  },
 
   app: {
     head: {

@@ -28,14 +28,14 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  // Initialize Supabase client with service role (server-side)
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  // Initialize Supabase client (anon key works since RLS is disabled)
+  const supabaseUrl = process.env.SUPABASE_URL || 'https://axuizfevdgjvyuqoqudy.supabase.co';
+  const supabaseKey = process.env.SUPABASE_ANON_KEY || 'sb_publishable_cgSFLmCtDPAcqtetdo1gbg_qG1cgoHw';
 
   if (!supabaseUrl || !supabaseKey) {
     throw createError({
       statusCode: 500,
-      statusMessage: 'Server configuration error. Please try again later.',
+      statusMessage: 'Server configuration error. Please check environment variables.',
     });
   }
 
@@ -56,10 +56,10 @@ export default defineEventHandler(async (event) => {
     .single();
 
   if (dbError) {
-    console.error('Database insert error:', dbError.message);
+    console.error('Database insert error:', JSON.stringify(dbError));
     throw createError({
       statusCode: 500,
-      statusMessage: 'Failed to save your inquiry. Please try again later.',
+      statusMessage: 'DB Error: ' + dbError.message + ' | Code: ' + (dbError.code || 'none') + ' | Details: ' + (dbError.details || 'none'),
     });
   }
 

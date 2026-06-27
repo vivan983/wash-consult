@@ -4,16 +4,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
     return;
   }
 
-  try {
-    const supabase = useSupabaseClient();
-    const { data: { session } } = await supabase.auth.getSession();
-
-    if (!session) {
-      // Store the intended destination so we can redirect back after login
-      return navigateTo(`/admin?login=true&redirect=${encodeURIComponent(to.fullPath)}`);
-    }
-  } catch (e) {
-    // If Supabase client isn't available or fails, redirect to admin login
-    return navigateTo(`/admin?login=true&redirect=${encodeURIComponent(to.fullPath)}`);
-  }
+  // The admin page handles its own login UI — no redirect needed
+  // Auth check happens inside the page component via useSupabaseClient().auth.getSession()
 });
