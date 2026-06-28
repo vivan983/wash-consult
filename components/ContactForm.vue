@@ -10,7 +10,7 @@
       <h3 class="text-xl font-heading font-bold text-primary mb-2">Thank You for Your Inquiry</h3>
       <p class="text-gray-600 mb-6">
         We have received your message and will get back to you within 1–2 business days.
-        For urgent matters, please email us directly at <strong>admin@washconsult.com</strong>.
+        For urgent matters, please email us directly at <strong>washconsultgtc@gmail.com</strong>.
       </p>
       <button @click="contactStore.resetForm()" class="btn-secondary">
         Send Another Message

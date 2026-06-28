@@ -6,9 +6,14 @@
     <div class="w-full max-w-md">
       <!-- Logo -->
       <div class="text-center mb-8">
-        <div class="w-16 h-16 bg-accent rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-          <span class="font-heading font-bold text-primary text-xl">WC</span>
-        </div>
+        <img
+          src="/logo_white_medium.png"
+          alt="WASH-CONSULT GENERAL TRADING CO"
+          class="mx-auto mb-4"
+          style="max-height: 100px; width: auto;"
+          width="228"
+          height="300"
+        />
         <h1 class="text-2xl font-heading font-bold text-white">
           {{ isSignUp ? 'Create Account' : 'Admin Portal' }}
         </h1>
@@ -148,9 +153,14 @@
     >
       <!-- Brand -->
       <div class="flex items-center gap-3 px-5 py-5 border-b border-white/[0.08]">
-        <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center shrink-0 shadow-md shadow-accent/20">
-          <span class="font-heading font-bold text-primary text-sm">WC</span>
-        </div>
+        <img
+          src="/logo_white_medium.png"
+          alt="WASH-CONSULT GENERAL TRADING CO"
+          class="shrink-0"
+          style="max-height: 48px; width: auto;"
+          width="228"
+          height="300"
+        />
         <div class="min-w-0">
           <p class="font-heading font-bold text-white text-sm leading-tight">Admin Panel</p>
           <p class="text-accent text-caption leading-tight">WASH Consult</p>

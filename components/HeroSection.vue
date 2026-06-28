@@ -21,19 +21,19 @@
           </span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 tracking-tight animate-slide-up delay-100">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 tracking-tight animate-slide-up delay-200">
           Connecting
           <span class="text-accent">South Sudan</span>
           to the World
         </h1>
 
-        <p class="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mb-10 animate-slide-up delay-200">
+        <p class="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mb-10 animate-slide-up delay-300">
           WASH – Consult General Trading Co. Ltd is a multi-sector trading company
           providing reliable general trading, logistics, financial services, and
           agricultural solutions from our base in Juba, South Sudan.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 animate-slide-up delay-300">
+        <div class="flex flex-col sm:flex-row gap-4 animate-slide-up delay-400">
           <NuxtLink to="/services" class="btn-primary text-lg px-8 py-4">
             Explore Services
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

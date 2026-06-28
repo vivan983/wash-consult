@@ -1,20 +1,18 @@
 <template>
   <nav class="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm shadow-lg" role="navigation" aria-label="Main navigation">
     <div class="container-custom">
-      <div class="flex items-center justify-between h-16 md:h-20">
+      <div class="flex items-center justify-between h-20 md:h-24">
         <!-- Logo -->
-        <NuxtLink to="/" class="flex items-center gap-3 group" aria-label="WASH Consult Home">
-          <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center font-heading font-bold text-primary text-sm group-hover:bg-accent-400 transition-colors">
-            WC
-          </div>
-          <div class="hidden sm:block">
-            <span class="font-heading font-bold text-white text-sm md:text-base leading-tight block">
-              WASH – CONSULT
-            </span>
-            <span class="text-accent text-caption leading-tight block">
-              General Trading Co. Ltd
-            </span>
-          </div>
+        <NuxtLink to="/" class="shrink-0" aria-label="WASH-CONSULT GENERAL TRADING CO — Home">
+          <img
+            src="/logo_white_medium.png"
+            alt="WASH-CONSULT GENERAL TRADING CO"
+            class="logo-header"
+            width="228"
+            height="300"
+            loading="eager"
+            decoding="async"
+          />
         </NuxtLink>
 
         <!-- Desktop Navigation -->

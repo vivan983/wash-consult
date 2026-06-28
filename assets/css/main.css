@@ -95,6 +95,64 @@
 }
 
 /* ============================================
+   Logo Styles
+   ============================================ */
+
+.logo-header {
+  max-height: 90px;
+  width: auto;
+  height: auto;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.logo-header:hover {
+  transform: scale(1.05);
+}
+
+.logo-footer {
+  max-height: 72px;
+  width: auto;
+  height: auto;
+  opacity: 0.95;
+  display: block;
+}
+
+.logo-hero {
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  display: block;
+  animation: fadeInLogo 1s ease;
+}
+
+@keyframes fadeInLogo {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive logo sizing */
+@media (max-width: 640px) {
+  .logo-header { max-height: 64px; }
+  .logo-footer { max-height: 52px; }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .logo-header { max-height: 78px; }
+  .logo-footer { max-height: 64px; }
+}
+
+/* Retina / high-DPI: ensure crisp rendering */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-header,
+  .logo-footer,
+  .logo-hero {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
    Animations (CSS-only, no heavy JS)
    ============================================ */
 

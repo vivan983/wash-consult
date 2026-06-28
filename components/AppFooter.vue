@@ -20,14 +20,16 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <!-- Company Info -->
         <div class="lg:col-span-2">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center font-heading font-bold text-primary text-sm">
-              WC
-            </div>
-            <div>
-              <h3 class="font-heading font-bold text-white">WASH – CONSULT</h3>
-              <p class="text-accent text-caption">General Trading Co. Ltd</p>
-            </div>
+          <div class="mb-6">
+            <img
+              src="/logo_white_medium.png"
+              alt="WASH-CONSULT GENERAL TRADING CO"
+              class="logo-footer"
+              width="228"
+              height="300"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
 <a
             href="https://wa.me/211928521356"
@@ -65,7 +67,7 @@
             </li>
             <li class="flex items-start gap-2 text-white/60 text-sm">
               <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              <a href="mailto:admin@washconsult.com" class="hover:text-accent transition-colors">admin@washconsult.com</a>
+              <a href="mailto:washconsultgtc@gmail.com" class="hover:text-accent transition-colors">washconsultgtc@gmail.com</a>
             </li>
             <li class="flex items-start gap-2 text-white/60 text-sm">
               <svg class="w-5 h-5 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>

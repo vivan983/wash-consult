@@ -49,8 +49,8 @@
                   </div>
                   <div>
                     <p class="font-heading font-semibold text-primary text-sm">Email</p>
-                    <a href="mailto:admin@washconsult.com" class="text-accent text-sm hover:text-accent-500 transition-colors">
-                      admin@washconsult.com
+                    <a href="mailto:washconsultgtc@gmail.com" class="text-accent text-sm hover:text-accent-500 transition-colors">
+                      washconsultgtc@gmail.com
                     </a>
                   </div>
                 </div>

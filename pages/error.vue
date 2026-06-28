@@ -2,9 +2,14 @@
   <div class="min-h-screen bg-primary flex items-center justify-center p-4">
     <div class="text-center max-w-lg">
       <!-- Logo -->
-      <div class="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-        <span class="font-heading font-bold text-primary text-2xl">WC</span>
-      </div>
+      <img
+        src="/logo_white_medium.png"
+        alt="WASH-CONSULT GENERAL TRADING CO"
+        class="mx-auto mb-6"
+        style="max-height: 80px; width: auto;"
+        width="228"
+        height="300"
+      />
 
       <!-- Error code -->
       <h1 class="text-6xl md:text-8xl font-heading font-bold text-accent mb-4">
