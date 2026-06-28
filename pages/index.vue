@@ -91,27 +91,6 @@
       </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="py-20 bg-primary relative overflow-hidden">
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #D4A017 1px, transparent 1px); background-size: 30px 30px;" />
-      <div class="container-custom text-center relative z-10">
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
-          Ready to Partner with Us?
-        </h2>
-        <p class="text-white/70 text-lg mb-8 max-w-xl mx-auto">
-          Whether you need trading services, logistics support, or financial solutions,
-          our team in Juba is ready to help your business grow.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <NuxtLink to="/contact" class="btn-primary text-lg px-8 py-4">
-            Get in Touch
-          </NuxtLink>
-          <NuxtLink to="/about" class="btn-outline text-lg px-8 py-4">
-            Learn About Us
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
   </main>
 </template>
 
