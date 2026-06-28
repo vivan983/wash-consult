@@ -150,6 +150,18 @@
   border-color: #D4A017;
 }
 
+/* Fade transition (for modals, overlays, sidebar backdrop) */
+.fade-enter-active {
+  transition: opacity 0.2s ease-out;
+}
+.fade-leave-active {
+  transition: opacity 0.15s ease-in;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 /* Skeleton loading */
 .skeleton {
   @apply bg-gray-200 animate-pulse rounded;

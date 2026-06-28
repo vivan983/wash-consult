@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen bg-primary flex items-center justify-center p-4">
-    <slot />
-  </div>
+  <slot />
 </template>
 
 <script setup>
+// Auth layout is a pass-through — the admin page handles its own layout
+// for both login (centered) and dashboard (sidebar + content) states.
 </script>
